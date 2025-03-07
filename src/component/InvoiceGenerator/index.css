@@ -1,0 +1,345 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+}
+
+.invoice-gen-bg {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow-x: hidden;
+  background-color: #f0f0f0;
+}
+
+.invoice-container {
+  max-width: 800px;
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: transparent;
+  margin-top: 5px;
+}
+
+.input-field:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.input-label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #666;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  background-color: #fff;
+  padding: 0 5px;
+}
+
+.input-field:focus + .input-label,
+.input-field:not(:placeholder-shown) + .input-label {
+  top: 0;
+  font-size: 12px;
+  color: #007bff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.add-button {
+  background: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.add-button:hover {
+  background: #0056b3;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.invoice-table th,
+.invoice-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.invoice-table th {
+  background: #f4f4f4;
+  font-weight: bold;
+}
+
+.invoice-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.actions {
+  display: flex;
+  gap: 5px;
+}
+
+.edit-button {
+  background-color: #14698e;
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.edit-button:hover {
+  background-color: #1421d7;
+}
+
+.delete-button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #e53935;
+}
+
+.total {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.total h2 {
+  font-size: 18px;
+  color: #333;
+}
+
+.error_msg {
+  color: #ff0000;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.invoice-preview-bg {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.invoice-preview {
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  max-width: 900px;
+  width: 90%;
+  height: 90%;
+}
+
+.preview-content {
+  height: 75vh;
+  margin-bottom: 20px;
+  overflow: auto;
+}
+
+.preview-content::-webkit-scrollbar {
+  width: 5px;
+}
+
+.preview-content::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.preview-content::-webkit-scrollbar-thumb {
+  background-color: #856db7;
+  border-radius: 5px;
+}
+
+.preview-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.preview-actions button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.preview-actions button:hover {
+  background-color: #0056b3;
+}
+
+.myinvoice-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.myinvoice-button:hover {
+  background: #0056b3;
+}
+.logout-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+.logout-button:hover {
+  background: #0056b3;
+}
+.withtax {
+  font-size: 10px;
+  font-weight: normal;
+  color: #666;
+}
+/* Medium Screens (Tablets) */
+@media (min-width: 768px) {
+  .invoice-container {
+    max-width: 600px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .input-field {
+    font-size: 16px;
+  }
+
+  .invoice-table th,
+  .invoice-table td {
+    font-size: 16px;
+  }
+
+  .add-button {
+    font-size: 18px;
+  }
+
+  .invoice-preview {
+    max-width: 700px;
+  }
+
+  .preview-content {
+    height: 80vh;
+  }
+}
+
+/* Large Screens (Desktops & Larger) */
+@media (min-width: 1024px) {
+  .invoice-container {
+    max-width: 800px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .input-field {
+    font-size: 18px;
+    padding: 12px;
+  }
+
+  .invoice-table th,
+  .invoice-table td {
+    font-size: 18px;
+  }
+
+  .add-button {
+    font-size: 20px;
+  }
+
+  .invoice-preview {
+    max-width: 900px;
+  }
+
+  .preview-content {
+    height: 85vh;
+  }
+
+  .myinvoice-button,
+  .logout-button {
+    font-size: 16px;
+    padding: 12px 24px;
+  }
+}

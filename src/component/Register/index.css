@@ -1,0 +1,209 @@
+/* Base styles (for large screens) */
+.register-bg-container {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: url('https://i.postimg.cc/R09CQb4Y/cloud-computing-technology-concept-218381-43869.jpg');
+  background-size: cover;
+  background-position: center right;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-form-container {
+  width: 40vw;
+  height: 70vh;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.register-form-container.register-flipped {
+  transform: rotateY(180deg);
+}
+
+.register-form,
+.login-form {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset #fff 1px 1px 5px, inset #000 -1px -1px 5px, #000 1px 1px 5px, #fff -1px -1px 5px;
+}
+
+.login-form {
+  transform: rotateY(180deg);
+}
+
+.register-heading,
+.login-heading {
+  font-size: 35px;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.register-form-fields,
+.login-form-fields {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.register-input,
+.login-input {
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  margin: 10px 0;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: #00000040;
+  color: #fff;
+  outline: none;
+  box-shadow: inset #000 1px 1px 5px, inset #fff -1px -1px 5px, #fff 1px 1px 5px, #000 -1px -1px 5px;
+}
+
+.register-input:-internal-autofill-selected {
+  background-color: transparent !important;
+}
+
+.password {
+  width: 90%;
+  background-color: transparent;
+  color: #fff;
+  outline: none;
+  font-size: 16px;
+  border: none;
+}
+
+.passwordicon {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.register-input::placeholder,
+.login-input::placeholder,
+.password::placeholder {
+  color: #fedaff;
+}
+
+.register-button,
+.login-button {
+  width: 50%;
+  padding: 10px;
+  background-color: #2575fc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+.register-button:hover,
+.login-button:hover {
+  background-color: #1a5bbf;
+}
+
+.register-login-text,
+.login-register-text {
+  font-size: 20px;
+  margin-top: 10px;
+  color: #e8a9a9;
+}
+
+.register-login-link,
+.login-register-link {
+  color: #c5d4ee;
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.register-login-link:hover,
+.login-register-link:hover {
+  text-decoration: none;
+}
+
+/* Medium devices (tablets, 768px and below) */
+@media (max-width: 768px) {
+  .register-form-container {
+    width: 60vw;
+    height: 80vh;
+  }
+
+  .register-heading,
+  .login-heading {
+    font-size: 30px;
+  }
+
+  .register-input,
+  .login-input {
+    width: 90%;
+    font-size: 14px;
+  }
+
+  .register-button,
+  .login-button {
+    width: 60%;
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
+/* Small devices (phones, 576px and below) */
+@media (max-width: 576px) {
+  .register-form-container {
+    width: 90vw;
+    height: 90vh;
+  }
+
+  .register-heading,
+  .login-heading {
+    font-size: 25px;
+  }
+
+  .register-input,
+  .login-input {
+    width: 100%;
+    font-size: 12px;
+    padding: 8px;
+  }
+  .password{
+    font-size: 12px;
+  }
+  .passwordicon{
+    font-size: 12px;
+  }
+
+  .register-button,
+  .login-button {
+    width: 70%;
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  .register-login-text,
+  .login-register-text {
+    font-size: 15px;
+  }
+}
