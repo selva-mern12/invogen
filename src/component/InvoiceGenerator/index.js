@@ -85,20 +85,32 @@ const InvoiceGenerator = () => {
   };
 
   const generateInvoice = async () => {
-    setModalIsOpen(true);
-    const url = "https://invo-gen-server.onrender.com/invoice/add";
-    const option = {
-      method: "POST",
-      headers: { "Content-Type": "application/json",Authorization: `Bearer ${jwtToken}` },
-      body: JSON.stringify({ invoiceDetails }),
-    };
-    const addInvoiceResponse = await fetch(url, option);
-    const addInvoiceData = await addInvoiceResponse.json();
-    if (addInvoiceResponse.ok) {
-      console.log(invoiceDetails);
-      console.log(addInvoiceData.message);
-    } else {
-      console.log(addInvoiceData.error);
+    if(userId !== '' &&
+      clientName !== '' &&
+      clientCompany !== '' &&
+      clientPhNo !== '' &&
+      invoiceDate !== '' &&
+      items !== '' &&
+      grandTotal !== '' &&
+      grandTotalWithTax !== '' ){
+          const url = "https://invo-gen-server.onrender.com/invoice/add";
+        const option = {
+          method: "POST",
+          headers: { "Content-Type": "application/json",Authorization: `Bearer ${jwtToken}` },
+          body: JSON.stringify({ invoiceDetails }),
+        };
+        const addInvoiceResponse = await fetch(url, option);
+        const addInvoiceData = await addInvoiceResponse.json();
+        if (addInvoiceResponse.ok) {
+          console.log(invoiceDetails);
+          console.log(addInvoiceData.message);
+          setModalIsOpen(true);
+        } else {
+          console.log(addInvoiceData.error);
+        }
+    }
+    else{
+      setErrorMsg("Add invoice Details")
     }
   };
 

@@ -19,7 +19,7 @@ const MyInvoice = () => {
     const [invoiceList, setInvoiceList] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [selectedInvoice, setSelectedInvoice] = useState(null);
-
+    const [searchTerm, setSearchTerm] = useState(''); 
     const jwtToken = Cookies.get('jwt_token');
     const userId = Cookies.get('user_id');
 
@@ -102,6 +102,11 @@ const MyInvoice = () => {
         setSelectedInvoice(null);
     };
 
+    // Filter invoices based on the search term
+    const filteredInvoices = invoiceList.filter((invoice) =>
+        invoice.clientName.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     const renderInvoices = () => {
         switch (invoiceStatus) {
             case pageStatus.loading:
@@ -118,11 +123,19 @@ const MyInvoice = () => {
                 return (
                     <div className="invoice-main-container">
                         <h2 className="invoice-heading">My Invoices</h2>
+                        {/* Add search input field */}
+                        <input
+                            type="text"
+                            placeholder="Search by company name"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className="search-input"
+                        />
                         <table className="invoice-table">
                             <thead>
                                 <tr>
-                                    <th>Client Name</th>
-                                    <th>Company</th>
+                                    <th>Store Name</th>
+                                    <th>Address</th>
                                     <th>Phone</th>
                                     <th>Invoice Date</th>
                                     <th>Item Details</th>
@@ -132,7 +145,7 @@ const MyInvoice = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {invoiceList.map((invoice) => (
+                                {filteredInvoices.map((invoice) => (
                                     <tr key={invoice.invoiceID}>
                                         <td>{invoice.clientName}</td>
                                         <td>{invoice.clientCompany}</td>
@@ -180,3 +193,4 @@ const MyInvoice = () => {
 };
 
 export default MyInvoice;
+
