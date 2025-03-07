@@ -4,11 +4,6 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-}
-
 .invoice-gen-bg {
   height: 100vh;
   width: 100vw;
@@ -29,6 +24,7 @@ body {
   background: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  overflow: auto;
 }
 
 h1 {
